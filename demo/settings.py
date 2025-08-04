@@ -1,12 +1,15 @@
 import os
-from dotenv import load_dotenv
 import dj_database_url
 
-# Load from .env file
-load_dotenv()
+# Detect environment (default: development)
+ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
+
+# Only load .env if in development
+if ENVIRONMENT == 'development':
+    from dotenv import load_dotenv
+    load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 DEBUG = ENVIRONMENT != 'production'
 
 # Load secrets from environment
@@ -83,8 +86,6 @@ DATABASES = {
 
 # Security only in production
 if ENVIRONMENT == 'production':
-    from dotenv import load_dotenv
-    load_dotenv()
     SESSION_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
