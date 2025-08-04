@@ -83,6 +83,8 @@ DATABASES = {
 
 # Security only in production
 if ENVIRONMENT == 'production':
+    from dotenv import load_dotenv
+    load_dotenv()
     SESSION_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
