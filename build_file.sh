@@ -1,18 +1,22 @@
 echo "BUILD START"
 
-# create a virtual environment named 'venv' if it doesn't already exist
-python3.9 -m venv venv
+# Check Python version
+python3 --version
+python3.9 --version || echo "python3.9 not found"
 
-# activate the virtual environment
+# Create virtual env
+python3 -m venv venv
+
+# Activate
 source venv/bin/activate
 
-# install all deps in the venv
+# Upgrade pip and tools
+pip install --upgrade pip setuptools wheel
+
+# Install dependencies
 pip install -r requirements.txt
 
-# collect static files using the Python interpreter from venv
+# Collect static files
 python manage.py collectstatic --noinput
 
 echo "BUILD END"
-
-# [optional] Start the application here 
-# python manage.py runserver
