@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>A simple, clean, and responsive HTML invoice template</title>
+
+		<!-- Favicon -->
+		<link rel="icon" href="./images/favicon.png" type="image/x-icon" />
+
+		<!-- Invoice styling -->
+		<style>
+			body {
+				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+				text-align: center;
+				color: #777;
+			}
+
+			body h1 {
+				font-weight: 300;
+				margin-bottom: 0px;
+				padding-bottom: 0px;
+				color: #000;
+			}
+
+			body h3 {
+				font-weight: 300;
+				margin-top: 10px;
+				margin-bottom: 20px;
+				font-style: italic;
+				color: #555;
+			}
+
+			body a {
+				color: #06f;
+			}
+
+			.invoice-box {
+				max-width: 800px;
+				margin: auto;
+				padding: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+				font-size: 16px;
+				line-height: 24px;
+				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+				color: #555;
+			}
+
+			.invoice-box table {
+				width: 100%;
+				line-height: inherit;
+				text-align: left;
+				border-collapse: collapse;
+			}
+
+			.invoice-box table td {
+				padding: 5px;
+				vertical-align: top;
+			}
+
+			.invoice-box table tr td:nth-child(2) {
+				text-align: right;
+			}
+
+			.invoice-box table tr.top table td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.top table td.title {
+				font-size: 45px;
+				line-height: 45px;
+				color: #333;
+			}
+
+			.invoice-box table tr.information table td {
+				padding-bottom: 40px;
+			}
+
+			.invoice-box table tr.heading td {
+				background: #eee;
+				border-bottom: 1px solid #ddd;
+				font-weight: bold;
+			}
+
+			.invoice-box table tr.details td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.item td {
+				border-bottom: 1px solid #eee;
+			}
+
+			.invoice-box table tr.item.last td {
+				border-bottom: none;
+			}
+
+			.invoice-box table tr.total td:nth-child(2) {
+				border-top: 2px solid #eee;
+				font-weight: bold;
+			}
+
+			@media only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="invoice-box">
+			<table>
+				<tr class="top">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="title">
+									<img src="data:image/png;base64,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" alt="Company logo" style="width: 100%; max-width: 300px" />
+								</td>
+
+								<td>
+									Invoice #: 123<br />
+									Created: January 1, 2023<br />
+									Due: February 1, 2023
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td>
+									Sparksuite, Inc.<br />
+									12345 Sunny Road<br />
+									Sunnyville, TX 12345
+								</td>
+
+								<td>
+									Acme Corp.<br />
+									John Doe<br />
+									john@example.com
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="heading">
+					<td>Payment Method</td>
+
+					<td>Check #</td>
+				</tr>
+
+				<tr class="details">
+					<td>Check</td>
+
+					<td>1000</td>
+				</tr>
+
+				<tr class="heading">
+					<td>Item</td>
+
+					<td>Price</td>
+				</tr>
+
+				<tr class="item">
+					<td>Website design</td>
+
+					<td>$300.00</td>
+				</tr>
+
+				<tr class="item">
+					<td>Hosting (3 months)</td>
+
+					<td>$75.00</td>
+				</tr>
+
+				<tr class="item last">
+					<td>Domain name (1 year)</td>
+
+					<td>$10.00</td>
+				</tr>
+
+				<tr class="total">
+					<td></td>
+
+					<td>Total: $385.00</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
